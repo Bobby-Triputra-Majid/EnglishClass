@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>16 Tenses</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;600&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Nunito', sans-serif;
+      background: #fff;
+      color: #222222;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: linear-gradient(90deg, #7b4de8, #5d34b4);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      height: 56px;
+      color: #e3dfff;
+    }
+
+    header .logo {
+      font-weight: 700;
+      font-size: 1.6rem;
+      user-select: none;
+      letter-spacing: 1.1px;
+      cursor: default;
+      font-family: 'Nunito', sans-serif;
+      text-shadow: 0 0 8px #a495f9;
+      color: #e3dfff;
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: #e3dfff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      cursor: pointer;
+    }
+
+    nav a:hover, nav a.active {
+      background-color: #a993fc;
+      color: #290a8b;
+      box-shadow: 0 4px 12px rgba(169, 147, 252, 0.8);
+    }
+
+    main {
+      flex-grow: 1;
+      padding: 2rem 3rem;
+      max-width: 100vw;
+      width: 100vw;
+      margin: 0;
+      background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+      color: #e3dfff;
+      font-weight: 500;
+      min-height: calc(100vh - 56px - 56px);
+      display: flex;
+      flex-direction: column;
+    }
+
+    section {
+      flex-grow: 1;
+      display: none;
+      animation: fadeIn 0.8s ease forwards;
+      overflow-y: auto;
+      padding: 20px;
+      width: 100%;
+      box-sizing: border-box;
+      background: transparent;
+      color: #e3dfff;
+    }
+
+    section.active {
+      display: flex;
+      flex-direction: column;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* Home Section Styles */
+    #home .hero {
+      height: 50vh;
+      background:
+        linear-gradient(135deg, rgba(77, 76, 80, 0.8)),
+        url('https://2.bp.blogspot.com/-6GzAH04ImuA/WdwqUd5VOUI/AAAAAAAAALk/fDLWdeZpmsMKOwyXFVFBH1gFfwFkAUIzQCLcBGAs/s400/tenses.gif')
+        center center/cover no-repeat;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 3rem;
+      text-align: center;
+      box-shadow: inset 0 0 80px 6px rgba(78, 93, 133, 0.7);
+      margin-bottom: 2rem;
+      color: #e3dfff;
+      font-weight: 700;
+      text-shadow: 1px 1px 10px rgba(0,0,0,0.7);
+      flex-shrink: 0;
+    }
+
+    #home .hero h1 {
+      font-size: 4rem;
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    #home .content {
+      max-width: 1300px;
+      margin: 0 auto;
+      color: #000000;
+      font-weight: 500;
+    }
+
+    #home .content p {
+      font-size: 1.2rem;
+      line-height: 1.75;
+      margin: 1rem 0;
+      user-select: text;
+    }
+
+    #home .content ul.tense-list {
+      padding-left: 20px;
+      color: #000000;
+      font-size: 1.15rem;
+      line-height: 1.6;
+      margin: 0.5rem 0 1.5rem 0;
+      user-select: text;
+    }
+
+    #home a.link-to {
+      font-weight: 600;
+      color: #bba6ff;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    /* Tenses Section */
+    #tenses h2 {
+      margin-bottom: 2rem;
+      font-size: 3rem;
+      font-weight: 700;
+      color: #62518a;
+      text-align: center;
+      text-shadow: 0 0 10px rgba(107, 71, 191, 0.7);
+    }
+
+    table.tense-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-weight: 600;
+      background-color: #62518a;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(112, 88, 219, 0.6);
+      overflow: hidden;
+    }
+
+    thead tr {
+      background: linear-gradient(90deg, #664dff, #acb9ff);
+      color: #1e0e6f;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    table.tense-table th, table.tense-table td {
+      border: 1px solid rgba(255 255 255 / 0.3);
+      padding: 1rem 1.3rem;
+      vertical-align: top;
+      text-align: left;
+      font-size: 1rem;
+      color: #e3dfff;
+    }
+
+    tbody tr:nth-child(odd) {
+      background-color: rgba(76 45 173 / 0.25);
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: rgba(107 71 191 / 0.3);
+    }
+
+    .example-text {
+      font-style: italic;
+      color: #d8ccff;
+      margin-top: 6px;
+      user-select: text;
+    }
+
+    /* Quiz Section */
+    #quiz h2 {
+      margin-bottom: 2rem;
+      font-size: 3rem;
+      font-weight: 700;
+      color: #62518a;
+      text-align: center;
+      text-shadow: 0 0 10px #b1aac2b3;
+    }
+
+    #quiz .quiz-container {
+      max-width: 980px;
+      margin: 0 auto;
+      background-color: #62518a;
+      border-radius: 16px;
+      padding: 2rem 3rem;
+      box-shadow: 0 0 25px rgba(112, 88, 219, 0.7);
+      min-height: auto;
+      display: flex;
+      flex-direction: column;
+      user-select: none;
+      color: #e3dfff;
+      font-weight: 600;
+    }
+
+    #quiz form {
+      display: flex;
+      flex-direction: column;
+      gap: 2.4rem;
+    }
+
+    .question-block {
+      background-color: rgba(112 88 219 / 0.25);
+      padding: 1rem 1.5rem;
+      border-radius: 14px;
+      box-shadow: 0 0 15px rgba(169,147,252,0.3);
+    }
+
+    .question-text {
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      user-select: text;
+      line-height: 1.3;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .option-label {
+      background: rgba(186 173 255 / 0.4);
+      padding: 0.85rem 1.2rem;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      color: #e0d1ff;
+      display: flex;
+      align-items: center;
+      gap: 1.3rem;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 3px 8px rgba(108, 92, 231, 0.4);
+      user-select: none;
+    }
+    .option-label:hover {
+      background-color: rgba(155 130 255 / 0.7);
+    }
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    input[type="radio"]:checked + label {
+      background-color: #a993fc;
+      color: #24005f;
+      font-weight: 700;
+      box-shadow: 0 0 15px #a993fccc;
+    }
+
+    .option-letter {
+      background: #7b4deb;
+      border-radius: 50%;
+      color: #d7d0ff;
+      width: 26px;
+      height: 26px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 800;
+      user-select: none;
+      flex-shrink: 0;
+      font-size: 1.1rem;
+      box-shadow: 0 0 12px #7b4debaa;
+    }
+
+    .btn-next, .btn-restart {
+      background: #6c5ce7;
+      border: none;
+      color: white;
+      padding: 0.75rem 2.3rem;
+      font-size: 1.2rem;
+      border-radius: 16px;
+      cursor: pointer;
+      margin: 1.5rem auto 0 auto;
+      box-shadow: 0 0 25px #6c5ce7bb;
+      transition: background-color 0.3s ease;
+      user-select: none;
+      font-weight: 700;
+      display: block;
+      width: fit-content;
+    }
+
+    .btn-next:disabled {
+      background-color: #b2a7ff66;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .btn-next:hover:not(:disabled), 
+    .btn-restart:hover {
+      background: #a68fff;
+      color: #2a1d6e;
+      box-shadow: 0 0 35px #a68fffcc;
+    }
+
+    .quiz-result {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #d3c0ff;
+      margin-top: 2rem;
+      text-align: center;
+      user-select: text;
+      min-height: 48px;
+      text-shadow: 0 0 8px rgba(178,150,255,0.9);
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(90deg, #7b4de8, #5d34b4);
+      text-align: center;
+      padding: 1rem 0;
+      color: #e3dfff;
+      font-weight: 600;
+      font-size: 1rem;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.15);
+      user-select: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    footer .author {
+      margin-right: 15px;
+    }
+
+    footer .social-icons a {
+      color: #e0d1ff;
+      text-decoration: none;
+      font-size: 1.3rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255 255 255 / 0.15);
+      transition: background-color 0.3s ease, color 0.3s ease;
+      box-shadow: 0 0 15px #9a7fff88;
+    }
+
+    footer .social-icons a:hover {
+      background-color: #b28cff;
+      color: #2a0b8c;
+      box-shadow: 0 0 30px #b28cffcc;
+    }
+
+    /* Icons with inline SVG */
+    .icon {
+      fill: currentColor;
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Scrollbar styling */
+    section::-webkit-scrollbar {
+      width: 10px;
+    }
+    section::-webkit-scrollbar-track {
+      background: rgba(107,49,202,0.1);
+      border-radius: 10px;
+    }
+    section::-webkit-scrollbar-thumb {
+      background: rgba(107,49,202,0.4);
+      border-radius: 10px;
+    }
+
+    /* Responsive */
+    @media (max-width: 650px) {
+      main {
+        padding: 1rem 1rem 2rem 1rem;
+        font-size: 1rem;
+        min-height: calc(100vh - 56px - 56px);
+      }
+
+      #home .hero h1 {
+        font-size: 2.7rem;
+      }
+
+      nav {
+        gap: 1rem;
+        padding: 1rem 1rem;
+      }
+
+      #quiz .option-label {
+        font-size: 1rem;
+        padding: 0.65rem 1rem;
+      }
+
+      table.tense-table th, table.tense-table td {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.85rem;
+      }
+
+      #quiz .btn-next, #quiz .btn-restart {
+        font-size: 1rem;
+        padding: 0.6rem 1.8rem;
+      }
+    }
+    /* Search Bar Styles */
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+#search-input {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #e3dfff;
+  font-family: 'Nunito', sans-serif;
+  width: 180px;
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+#search-input::placeholder {
+  color: #d0c4ff;
+}
+
+#search-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.3);
+  width: 220px;
+}
+
+#search-btn {
+  background: transparent;
+  border: none;
+  margin-left: -35px;
+  cursor: pointer;
+  color: #e3dfff;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .search-container {
+    order: 3;
+    width: 100%;
+    margin: 10px 0 0 0;
+  }
+  
+  #search-input {
+    width: 100%;
+  }
+  
+  #search-input:focus {
+    width: 100%;
+  }
+  
+  header {
+    flex-wrap: wrap;
+    padding: 0.5rem 1rem;
+    height: auto;
+  }
+  
+  nav {
+    order: 2;
+  }
+}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo" aria-label="Website name">EnglishClass</div>
+    <nav role="navigation" aria-label="Primary navigation">
+      <a href="#home" class="active" data-target="home">Home</a>
+      <a href="#tenses" data-target="tenses">Tenses</a>
+      <a href="#quiz" data-target="quiz">Quiz</a>
+      <a href="course.html">Course</a>
+    </nav>
+    <div class="search-container">
+  <input type="text" id="search-input" placeholder="Cari tenses..." aria-label="Search tenses">
+  <button id="search-btn" aria-label="Search button">
+    <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 0 0 1.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 0 0-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 0 0 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    </svg>
+  </button>
+</div>
+  </header>
+
+  <main>
+    <section id="home" class="active" aria-label="Home section">
+      <div class="hero" role="banner" aria-live="polite" aria-atomic="true">
+        <h1>Learn English Tenses Easily</h1>
+      </div>
+      <div class="content">
+        <p><strong>Tenses</strong> in English grammar express the time of action or event. There are 16 major English tenses, divided into four main categories: Simple, Continuous (Progressive), Perfect, and Perfect Continuous. Each tense describes different aspects of time and duration of actions.</p>
+        <p>The 16 tenses are:
+        </p>
+<ul class="tense-list">
+  <li><strong>Simple Present</strong> – Describes habits, general facts, or regular actions.  
+    <br>Example: She drinks coffee every morning.
+  </li>
+
+  <br>
+
+  <li><strong>Present Continuous</strong> – Describes actions happening right now or near future plans.  
+    <br>Example: He is reading a book now.
+  </li>
+
+  <br>
+
+  <li><strong>Present Perfect</strong> – Describes actions that happened in the past but are still relevant or have effects now.  
+    <br>Example: I have finished my homework.
+  </li>
+
+  <br>
+
+  <li><strong>Present Perfect Continuous</strong> – Describes actions that started in the past and are still continuing.  
+    <br>Example: She has been studying for three hours.
+  </li>
+
+  <br>
+
+  <li><strong>Simple Past</strong> – Describes completed actions in the past.  
+    <br>Example: They visited Bali last year.
+  </li>
+
+  <br>
+
+  <li><strong>Past Continuous</strong> – Describes actions that were in progress at a certain time in the past.  
+    <br>Example: I was cooking when he called.
+  </li>
+
+  <br>
+
+  <li><strong>Past Perfect</strong> – Describes actions that were completed before another past action.  
+    <br>Example: She had left when I arrived.
+  </li>
+
+  <br>
+
+  <li><strong>Past Perfect Continuous</strong> – Describes continuous actions that were happening before another event in the past.  
+    <br>Example: He had been working for two hours before lunch.
+  </li>
+
+  <br>
+
+  <li><strong>Simple Future</strong> – Describes actions that will happen in the future.  
+    <br>Example: I will travel to Japan next month.
+  </li>
+
+  <br>
+
+  <li><strong>Future Continuous</strong> – Describes actions that will be in progress at a certain time in the future.  
+    <br>Example: She will be studying at 8 PM.
+  </li>
+
+  <br>
+
+  <li><strong>Future Perfect</strong> – Describes actions that will be completed before a specific time in the future.  
+    <br>Example: We will have finished the project by tomorrow.
+  </li>
+
+  <br>
+
+  <li><strong>Future Perfect Continuous</strong> – Describes actions that will have been happening for a period of time by a certain future point.  
+    <br>Example: By next year, they will have been living here for a decade.
+  </li>
+
+  <br>
+
+  <li><strong>Past Future Simple</strong> – Describes a past intention or prediction about the future.  
+    <br>Example: He said he would call me.
+  </li>
+
+  <br>
+
+  <li><strong>Past Future Continuous</strong> – Describes actions that were expected to be in progress at a certain time in the future, from a past point of view.  
+    <br>Example: She said she would be working at that time.
+  </li>
+
+  <br>
+
+  <li><strong>Past Future Perfect</strong> – Describes actions that were expected to be completed before a specific time in the future, from a past point of view.  
+    <br>Example: I thought I would have finished the report by then.
+  </li>
+
+  <br>
+
+  <li><strong>Past Future Perfect Continuous</strong> – Describes ongoing actions that were expected to have continued for a period of time by a future point, from a past point of view.  
+    <br>Example: He said he would have been studying for hours.
+  </li>
+</ul>
+
+        <p>This learning website is designed to help you understand each tense with detailed explanations, formulae for positive, negative, and interrogative forms, and example sentences, then test your knowledge with interactive quizzes.</p>
+        <p>Get started with the <a href="#" class="link-to" data-target="tenses">Tenses</a> page to learn each tense in detail, or jump to the <a href="#" class="link-to" data-target="quiz">Quiz</a> page to test yourself!</p>
+      </div>
+    </section>
+
+    <section id="tenses" aria-label="Tenses section">
+      <h2>English Tenses Explained with Formulae</h2>
+      <table class="tense-table" aria-describedby="tenses-description" >
+        <thead>
+          <tr>
+            <th>Tense</th>
+            <th>Description</th>
+            <th>Formula</th>
+            <th>Example (Positive)</th>
+            <th>Example (Negative)</th>
+            <th>Example (Interrogative)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Simple Present</td>
+            <td>Used for habitual actions, general truths or repeated events.</td>
+            <td>
+              Positive:<br>
+              Subject + base verb (s/es for he/she/it)<br><br>
+              Negative:<br>
+              Subject + do/does + not + base verb<br><br>
+              Interrogative:<br>
+              Do/Does + subject + base verb ?
+            </td>
+            <td class="example-text">She <strong>walks</strong> to school every day.</td>
+            <td class="example-text">She <strong>does not walk</strong> to school on Sundays.</td>
+            <td class="example-text"><strong>Does</strong> she <strong>walk</strong> to school?</td>
+          </tr>
+          <tr>
+            <td>Present Continuous</td>
+            <td>Used for actions happening now or around the present time.</td>
+            <td>
+              Positive:<br>
+              Subject + am/is/are + verb-ing<br><br>
+              Negative:<br>
+              Subject + am/is/are + not + verb-ing<br><br>
+              Interrogative:<br>
+              Am/Is/Are + subject + verb-ing ?
+            </td>
+            <td class="example-text">He <strong>is reading</strong> a book right now.</td>
+            <td class="example-text">He <strong>is not reading</strong> a newspaper.</td>
+            <td class="example-text"><strong>Is</strong> he <strong>reading</strong> the book?</td>
+          </tr>
+          <tr>
+            <td>Present Perfect</td>
+            <td>Used for actions that happened at an unspecified time before now or started in the past and continue to the present.</td>
+            <td>
+              Positive:<br>
+              Subject + have/has + past participle<br><br>
+              Negative:<br>
+              Subject + have/has + not + past participle<br><br>
+              Interrogative:<br>
+              Have/Has + subject + past participle ?
+            </td>
+            <td class="example-text">They <strong>have visited</strong> Paris several times.</td>
+            <td class="example-text">They <strong>have not visited</strong> London yet.</td>
+            <td class="example-text"><strong>Have</strong> they <strong>visited</strong> Paris?</td>
+          </tr>
+          <tr>
+            <td>Present Perfect Continuous</td>
+            <td>Used to show that an action started in the past and has continued up until now.</td>
+            <td>
+              Positive:<br>
+              Subject + have/has + been + verb-ing<br><br>
+              Negative:<br>
+              Subject + have/has + not + been + verb-ing<br><br>
+              Interrogative:<br>
+              Have/Has + subject + been + verb-ing ?
+            </td>
+            <td class="example-text">She <strong>has been working</strong> here for five years.</td>
+            <td class="example-text">She <strong>has not been working</strong> today.</td>
+            <td class="example-text"><strong>Has</strong> she <strong>been working</strong> long?</td>
+          </tr>
+          <tr>
+            <td>Simple Past</td>
+            <td>Used for completed actions at a specific time in the past.</td>
+            <td>
+              Positive:<br>
+              Subject + past form of verb<br><br>
+              Negative:<br>
+              Subject + did + not + base verb<br><br>
+              Interrogative:<br>
+              Did + subject + base verb ?
+            </td>
+            <td class="example-text">I <strong>watched</strong> a movie yesterday.</td>
+            <td class="example-text">I <strong>did not watch</strong> TV last night.</td>
+            <td class="example-text"><strong>Did</strong> you <strong>watch</strong> that movie?</td>
+          </tr>
+          <tr>
+            <td>Past Continuous</td>
+            <td>Used for actions that were happening at a specific time in the past.</td>
+            <td>
+              Positive:<br>
+              Subject + was/were + verb-ing<br><br>
+              Negative:<br>
+              Subject + was/were + not + verb-ing<br><br>
+              Interrogative:<br>
+              Was/Were + subject + verb-ing ?
+            </td>
+            <td class="example-text">They <strong>were playing</strong> football at 5 PM.</td>
+            <td class="example-text">They <strong>were not playing</strong> basketball then.</td>
+            <td class="example-text"><strong>Were</strong> they <strong>playing</strong> football?</td>
+          </tr>
+          <tr>
+            <td>Past Perfect</td>
+            <td>Used to show that an action was completed before another took place in the past.</td>
+            <td>
+              Positive:<br>
+              Subject + had + past participle<br><br>
+              Negative:<br>
+              Subject + had + not + past participle<br><br>
+              Interrogative:<br>
+              Had + subject + past participle ?
+            </td>
+            <td class="example-text">She <strong>had left</strong> before I arrived.</td>
+            <td class="example-text">She <strong>had not left</strong> when I called.</td>
+            <td class="example-text"><strong>Had</strong> she <strong>left</strong> before you came?</td>
+          </tr>
+          <tr>
+            <td>Past Perfect Continuous</td>
+            <td>Used to show duration of an action up to a certain point in the past.</td>
+            <td>
+              Positive:<br>
+              Subject + had + been + verb-ing<br><br>
+              Negative:<br>
+              Subject + had + not + been + verb-ing<br><br>
+              Interrogative:<br>
+              Had + subject + been + verb-ing ?
+            </td>
+            <td class="example-text">He <strong>had been studying</strong> for two hours when she called.</td>
+            <td class="example-text">He <strong>had not been studying</strong> before dinner.</td>
+            <td class="example-text"><strong>Had</strong> he <strong>been studying</strong> long before she arrived?</td>
+          </tr>
+          <tr>
+            <td>Simple Future</td>
+            <td>Used for actions that will happen in the future.</td>
+            <td>
+              Positive:<br>
+              Subject + will + base verb<br><br>
+              Negative:<br>
+              Subject + will + not + base verb<br><br>
+              Interrogative:<br>
+              Will + subject + base verb ?
+            </td>
+            <td class="example-text">I <strong>will travel</strong> to Japan next month.</td>
+            <td class="example-text">I <strong>will not travel</strong> next week.</td>
+            <td class="example-text"><strong>Will</strong> you <strong>travel</strong> tomorrow?</td>
+          </tr>
+          <tr>
+            <td>Future Continuous</td>
+            <td>Used for actions that will be in progress at a specific time in the future.</td>
+            <td>
+              Positive:<br>
+              Subject + will + be + verb-ing<br><br>
+              Negative:<br>
+              Subject + will + not + be + verb-ing<br><br>
+              Interrogative:<br>
+              Will + subject + be + verb-ing ?
+            </td>
+            <td class="example-text">She <strong>will be working</strong> at 10 AM tomorrow.</td>
+            <td class="example-text">She <strong>will not be working</strong> on Sunday.</td>
+            <td class="example-text"><strong>Will</strong> she <strong>be working</strong> tomorrow morning?</td>
+          </tr>
+          <tr>
+            <td>Future Perfect</td>
+            <td>Used to describe an action that will be completed before a certain time in the future.</td>
+            <td>
+              Positive:<br>
+              Subject + will + have + past participle<br><br>
+              Negative:<br>
+              Subject + will + not + have + past participle<br><br>
+              Interrogative:<br>
+              Will + subject + have + past participle ?
+            </td>
+            <td class="example-text">They <strong>will have finished</strong> the project by Friday.</td>
+            <td class="example-text">They <strong>will not have finished</strong> by tomorrow.</td>
+            <td class="example-text"><strong>Will</strong> they <strong>have finished</strong> on time?</td>
+          </tr>
+          <tr>
+            <td>Future Perfect Continuous</td>
+            <td>Used to show that an action will have been happening for a duration by a future time.</td>
+            <td>
+              Positive:<br>
+              Subject + will + have + been + verb-ing<br><br>
+              Negative:<br>
+              Subject + will + not + have + been + verb-ing<br><br>
+              Interrogative:<br>
+              Will + subject + have + been + verb-ing ?
+            </td>
+            <td class="example-text">By next year, I <strong>will have been living</strong> here for a decade.</td>
+            <td class="example-text">By next year, I <strong>will not have been living</strong> here for very long.</td>
+            <td class="example-text"><strong>Will</strong> you <strong>have been living</strong> here for 10 years by then?</td>
+          </tr>
+          <tr>
+            <td>Past Future Simple</td>
+            <td>Used to describe a future action from a past perspective.</td>
+            <td>
+              Positive:<br>
+              Subject + would + base verb<br><br>
+              Negative:<br>
+              Subject + would + not + base verb<br><br>
+              Interrogative:<br>
+              Would + subject + base verb ?
+            </td>
+            <td class="example-text">She said she <strong>would travel</strong> tomorrow.</td>
+            <td class="example-text">She said she <strong>would not travel</strong> on Monday.</td>
+            <td class="example-text"><strong>Would</strong> she <strong>travel</strong> the next day?</td>
+          </tr>
+          <tr>
+            <td>Past Future Continuous</td>
+            <td>Used to describe an ongoing action in the future from a past viewpoint.</td>
+            <td>
+              Positive:<br>
+              Subject + would + be + verb-ing<br><br>
+              Negative:<br>
+              Subject + would + not + be + verb-ing<br><br>
+              Interrogative:<br>
+              Would + subject + be + verb-ing ?
+            </td>
+            <td class="example-text">He said he <strong>would be working</strong> at 5 PM.</td>
+            <td class="example-text">He said he <strong>would not be working</strong> then.</td>
+            <td class="example-text"><strong>Would</strong> he <strong>be working</strong> at that time?</td>
+          </tr>
+          <tr>
+            <td>Past Future Perfect</td>
+            <td>Used to describe a completed action in the future from a past perspective.</td>
+            <td>
+              Positive:<br>
+              Subject + would + have + past participle<br><br>
+              Negative:<br>
+              Subject + would + not + have + past participle<br><br>
+              Interrogative:<br>
+              Would + subject + have + past participle ?
+            </td>
+            <td class="example-text">They said they <strong>would have left</strong> by noon.</td>
+            <td class="example-text">They said they <strong>would not have left</strong> by 1 PM.</td>
+            <td class="example-text"><strong>Would</strong> they <strong>have left</strong> by noon?</td>
+          </tr>
+          <tr>
+            <td>Past Future Perfect Continuous</td>
+            <td>Used to describe a continuing action in the future up to a certain point from a past perspective.</td>
+            <td>
+              Positive:<br>
+              Subject + would + have + been + verb-ing<br><br>
+              Negative:<br>
+              Subject + would + not + have + been + verb-ing<br><br>
+              Interrogative:<br>
+              Would + subject + have + been + verb-ing ?
+            </td>
+            <td class="example-text">By then, she <strong>would have been working</strong> for hours.</td>
+            <td class="example-text">By then, she <strong>would not have been working</strong> for so long.</td>
+            <td class="example-text"><strong>Would</strong> she <strong>have been working</strong> for hours by then?</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="quiz" aria-label="Quiz section">
+      <h2>Test Your Tense Knowledge</h2>
+      <div class="quiz-container" aria-live="polite" aria-atomic="true">
+        <form id="quiz-form">
+          <div id="questions-container">
+            <!-- Questions will be inserted here in groups -->
+          </div>
+          <button type="submit" class="btn-next" id="btn-next" disabled>Submit Answers</button>
+          <button type="button" class="btn-restart" id="btn-restart" style="display:none;">Restart Quiz</button>
+          <div class="quiz-result" id="quiz-result" role="alert" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+ <footer>
+  <div class="footer-content">
+    <div class="author">© 2025 EnglishClass - Bobby Triputra Majid</div>
+    <div class="footer-links">
+      <a href="#" class="footer-link">Terms of Service</a>
+      <a href="#" class="footer-link">Privacy Policy</a>
+      <a href="#" class="footer-link">Contact Us</a>
+    </div>
+    <div class="social-icons" aria-label="Social media links">
+      <a href="https://www.instagram.com" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram" class="social-icon">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7 2C4.238 2 2 4.238 2 7v10c0 2.762 2.238 5 5 5h10c2.762 0 5-2.238 5-5V7c0-2.762-2.238-5-5-5H7zM12 7.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm5.7-.75a1.05 1.05 0 1 1-2.1 0 1.05 1.05 0 0 1 2.1 0zM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
+        </svg>
+      </a>
+      <a href="https://wa.me" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp" class="social-icon">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M17.472 14.382a5.907 5.907 0 0 1-3.34 1.073 5.883 5.883 0 0 1-5.72-5.978c0-3.307 2.69-6 6-6 3.31 0 6 2.693 6 6a5.88 5.88 0 0 1-3.02 5.832zm-.448-7.191a1.504 1.504 0 0 0-1.664-1.664 1.498 1.498 0 0 0-1.664 1.664c0 .83.673 1.503 1.503 1.503a1.525 1.525 0 0 0 1.825-1.503z"/>
+          <path fill="none" d="M0 0h24v24H0z"/>
+        </svg>
+      </a>
+      <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter" title="Twitter" class="social-icon">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20 7.538a6.574 6.574 0 0 1-1.884.519 3.293 3.293 0 0 0 1.443-1.815 6.59 6.59 0 0 1-2.084.798 3.287 3.287 0 0 0-5.595 2.993 9.33 9.33 0 0 1-6.766-3.429 3.288 3.288 0 0 0 1.02 4.382 3.274 3.274 0 0 1-1.487-.41v.041c0 1.541 1.096 2.828 2.55 3.126a3.29 3.29 0 0 1-1.482.057 3.29 3.29 0 0 0 3.067 2.278 6.588 6.588 0 0 1-4.073 1.404c-.265 0-.526-.018-.781-.05a9.304 9.304 0 0 0 5.034 1.476c6.042 0 9.344-5.002 9.344-9.342 0-.142-.003-.284-.01-.425A6.665 6.665 0 0 0 20 7.538z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+  <script>
+    // Navigation tab switching
+    const navLinks = document.querySelectorAll('nav a');
+    const sections = document.querySelectorAll('main section');
+
+    function showSection(targetId){
+      navLinks.forEach(l => l.classList.remove('active'));
+      sections.forEach(section => section.classList.remove('active'));
+
+      const navLink = [...navLinks].find(l => l.dataset.target === targetId);
+      if(navLink) navLink.classList.add('active');
+
+      const sec = document.getElementById(targetId);
+      if(sec) sec.classList.add('active');
+
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+navLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    const targetId = link.getAttribute('data-target');
+    
+    // ✅ Jika ada data-target, berarti link internal → pakai showSection
+    if (targetId) {
+      e.preventDefault();
+      showSection(targetId);
+
+      // Jika quiz, reset ulang quiz
+      if (targetId === 'quiz') {
+        setTimeout(initQuiz, 100);
+      }
+    }
+    // ❌ Jika tidak ada data-target (seperti Course), biarkan default behavior
+  });
+});
+
+
+    // Make internal text links in home for navigation
+    document.querySelectorAll('.link-to').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = link.dataset.target;
+        showSection(target);
+      });
+    });
+
+    // Quiz data with 30 questions
+    const quizData = [
+      { question: 'He _______ his homework right now.', options: ['does', 'is doing', 'did'], correctIndex: 1 },
+      { question: 'She _______ before I arrived.', options: ['left', 'had left', 'has left'], correctIndex: 1 },
+      { question: 'I _______ to Japan next year.', options: ['go', 'will go', 'am going'], correctIndex: 1 },
+      { question: 'They _______ dinner when I called.', options: ['were having', 'have had', 'had had'], correctIndex: 0 },
+      { question: 'You _______ not listen to music yesterday.', options: ['did', 'do', 'did not'], correctIndex: 2 },
+      { question: 'Mary _______ to the gym every Saturday.', options: ['go', 'goes', 'is going'], correctIndex: 1 },
+      { question: 'I _______ work at 10 AM tomorrow.', options: ['will be', 'am', 'was'], correctIndex: 0 },
+      { question: 'We _______ the movie before it started.', options: ['had watched', 'have watched', 'watched'], correctIndex: 0 },
+      { question: 'He _______ in London since 2010.', options: ['has lived', 'lived', 'had lived'], correctIndex: 0 },
+      { question: 'They _______ here for two hours by 6 PM.', options: ['will have been waiting', 'will wait', 'waited'], correctIndex: 0 },
+      { question: 'I _______ the book right now.', options: ['am reading', 'read', 'was reading'], correctIndex: 0 },
+      { question: 'She _______ her homework every day.', options: ['does', 'did', 'is doing'], correctIndex: 0 },
+      { question: 'We _______ visited the museum last year.', options: ['have', 'had', 'will have'], correctIndex: 0 },
+      { question: 'He _______ been working all day.', options: ['has', 'have', 'had'], correctIndex: 0 },
+      { question: 'They _______ to the park yesterday.', options: ['go', 'went', 'going'], correctIndex: 1 },
+      { question: 'She _______ studying when I called.', options: ['was', 'were', 'is'], correctIndex: 0 },
+      { question: 'By next week, I _______ finished the project.', options: ['will have', 'have', 'had'], correctIndex: 0 },
+      { question: 'We _______ working on this since morning.', options: ['have been', 'has been', 'had been'], correctIndex: 0 },
+      { question: 'He said he _______ the report tomorrow.', options: ['would finish', 'will finish', 'finishes'], correctIndex: 0 },
+      { question: 'I _______ playing football at 7 PM yesterday.', options: ['was', 'were', 'am'], correctIndex: 0 },
+      { question: 'The train _______ at 9 PM every day.', options: ['leaves', 'leave', 'is leaving'], correctIndex: 0 },
+      { question: 'She _______ her keys yesterday.', options: ['lost', 'loses', 'is losing'], correctIndex: 0 },
+      { question: 'I _______ never seen such a beautiful place.', options: ['have', 'had', 'will have'], correctIndex: 0 },
+      { question: 'They _______ married for 5 years by this June.', options: ['will have been', 'have been', 'had been'], correctIndex: 0 },
+      { question: 'He _______ his work when I arrived.', options: ['had finished', 'have finished', 'finished'], correctIndex: 0 },
+      { question: 'We _______ watching TV when you called.', options: ['were', 'was', 'are'], correctIndex: 0 },
+      { question: 'She _______ the meeting next Monday.', options: ['will attend', 'attends', 'attended'], correctIndex: 0 },
+      { question: 'I _______ a great time at the party last night.', options: ['had', 'have', 'will have'], correctIndex: 0 },
+      { question: 'You _______ to work early every day.', options: ['go', 'goes', 'went'], correctIndex: 0 },
+      { question: 'They _______ cooking dinner when I called.', options: ['were', 'was', 'are'], correctIndex: 0 }
+    ];
+
+    const questionsContainer = document.getElementById('questions-container');
+    const btnNext = document.getElementById('btn-next');
+    const btnRestart = document.getElementById('btn-restart');
+    const quizResult = document.getElementById('quiz-result');
+    const quizForm = document.getElementById('quiz-form');
+
+    const QUESTIONS_PER_PAGE = 5;
+    let currentPage = 0;
+    let totalPages = Math.ceil(quizData.length / QUESTIONS_PER_PAGE);
+    let score = 0;
+
+    function createQuestionHTML(questionObj, globalIndex) {
+      let html = `<div class="question-block" data-global-index="${globalIndex}" aria-live="polite" aria-atomic="true">
+      <div class="question-text" id="q${globalIndex}_text">${globalIndex + 1}. ${questionObj.question}</div>
+      <div class="options" role="radiogroup" aria-labelledby="q${globalIndex}_text">`;
+      questionObj.options.forEach((opt, i) => {
+        html += `
+        <input type="radio" id="q${globalIndex}_option${i}" name="q${globalIndex}" value="${i}" />
+        <label for="q${globalIndex}_option${i}" class="option-label">
+          <div class="option-letter">${String.fromCharCode(65 + i)}</div>${opt}
+        </label>`;
+      });
+      html += `</div></div>`;
+      return html;
+    }
+
+    function renderPage(page) {
+      quizResult.textContent = '';
+      btnNext.disabled = true;
+      btnRestart.style.display = 'none';
+      questionsContainer.innerHTML = '';
+      let start = page * QUESTIONS_PER_PAGE;
+      let end = Math.min(start + QUESTIONS_PER_PAGE, quizData.length);
+      for(let i = start; i < end; i++) {
+        questionsContainer.insertAdjacentHTML('beforeend', createQuestionHTML(quizData[i], i));
+      }
+      addOptionListeners();
+    }
+
+    function addOptionListeners() {
+      const allInputs = questionsContainer.querySelectorAll('input[type="radio"]');
+      const questionGroups = {};
+      allInputs.forEach(input => {
+        let name = input.name;
+        if(!questionGroups[name]) questionGroups[name] = [];
+        questionGroups[name].push(input);
+      });
+
+      Object.values(questionGroups).forEach(radioGroup => {
+        radioGroup.forEach(input => {
+          input.addEventListener('change', () => {
+            // Check if all questions on page answered
+            let allAnswered = Object.values(questionGroups).every(group => group.some(i => i.checked));
+            btnNext.disabled = !allAnswered;
+          });
+        });
+      });
+    }
+
+    quizForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Check answers for current page only
+      let start = currentPage * QUESTIONS_PER_PAGE;
+      let end = Math.min(start + QUESTIONS_PER_PAGE, quizData.length);
+      const userAnswers = {};
+      for(let i = start; i < end; i++) {
+        const selected = quizForm.querySelector(`input[name="q${i}"]:checked`);
+        if(!selected) {
+          alert('Please answer all questions before submitting.');
+          return;
+        }
+        userAnswers[i] = parseInt(selected.value, 10);
+      }
+
+      // Score counting for this page
+      let correctCount = 0;
+      for(let i = start; i < end; i++) {
+        if(userAnswers[i] === quizData[i].correctIndex) {
+          correctCount++;
+        }
+      }
+
+      score += correctCount;
+
+      if(currentPage < totalPages - 1) {
+        currentPage++;
+        renderPage(currentPage);
+        quizResult.textContent = `You scored ${correctCount} out of ${end - start} on this set. Total score: ${score}`;
+        btnNext.disabled = true;
+      } else {
+        // Quiz finished
+        questionsContainer.innerHTML = '';
+        btnNext.style.display = 'none';
+        btnRestart.style.display = 'inline-block';
+        quizResult.innerHTML = `🎉 Quiz completed! Your total score: <strong>${score}</strong> out of <strong>${quizData.length}</strong>. <br> Click Restart to try again.`;
+      }
+    });
+
+    btnRestart.addEventListener('click', () => {
+      currentPage = 0;
+      score = 0;
+      btnNext.style.display = 'inline-block';
+      btnRestart.style.display = 'none';
+      quizResult.textContent = '';
+      renderPage(currentPage);
+      btnNext.disabled = true;
+    });
+
+    // Initialize quiz if quiz section active on load
+    function initQuiz(){
+      currentPage = 0;
+      score = 0;
+      btnNext.style.display = 'inline-block';
+      btnRestart.style.display = 'none';
+      btnNext.disabled = true;
+      quizResult.textContent = '';
+      renderPage(currentPage);
+    }
+
+    window.addEventListener('load', () => {
+      const activeSection = document.querySelector('main section.active');
+      if(activeSection && activeSection.id === 'quiz'){
+        initQuiz();
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        if(link.dataset.target === 'quiz'){
+          setTimeout(initQuiz, 100);
+        }
+      });
+    });
+    // Search functionality
+const searchInput = document.getElementById('search-input');
+const searchBtn = document.getElementById('search-btn');
+
+function searchTenses() {
+  const searchTerm = searchInput.value.toLowerCase().trim();
+  
+  if (!searchTerm) return;
+  
+  // Cari di tabel tenses
+  const tenseRows = document.querySelectorAll('.tense-table tbody tr');
+  let found = false;
+  
+  tenseRows.forEach(row => {
+    const tenseName = row.cells[0].textContent.toLowerCase();
+    const tenseDesc = row.cells[1].textContent.toLowerCase();
+    
+    if (tenseName.includes(searchTerm) || tenseDesc.includes(searchTerm)) {
+      row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      row.style.animation = 'highlight 1.5s';
+      found = true;
+    }
+  });
+  
+  // Cari di daftar tenses di home
+  const tenseItems = document.querySelectorAll('.tense-list li');
+  tenseItems.forEach(item => {
+    const itemText = item.textContent.toLowerCase();
+    if (itemText.includes(searchTerm)) {
+      item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      item.style.animation = 'highlight 1.5s';
+      found = true;
+    }
+  });
+  
+  if (!found) {
+    alert('Tenses tidak ditemukan. Coba kata kunci lain seperti "present", "past", atau "continuous"');
+  }
+}
+
+// Tambahkan animasi highlight
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes highlight {
+    0% { background-color: rgba(169, 147, 252, 0); }
+    50% { background-color: rgba(169, 147, 252, 0.5); }
+    100% { background-color: rgba(169, 147, 252, 0); }
+  }
+`;
+document.head.appendChild(style);
+
+// Event listeners
+searchBtn.addEventListener('click', searchTenses);
+searchInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    searchTenses();
+  }
+});
+  </script>
+  
+</body>
+</html>
+

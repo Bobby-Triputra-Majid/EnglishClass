@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>16 Tenses</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;600&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Nunito', sans-serif;
+      background: #fff;
+      color: #222222;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: linear-gradient(90deg, #7b4de8, #5d34b4);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      height: 56px;
+      color: #e3dfff;
+    }
+
+    header .logo {
+      font-weight: 700;
+      font-size: 1.6rem;
+      user-select: none;
+      letter-spacing: 1.1px;
+      cursor: default;
+      font-family: 'Nunito', sans-serif;
+      text-shadow: 0 0 8px #a495f9;
+      color: #e3dfff;
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: #e3dfff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      cursor: pointer;
+    }
+
+    nav a:hover, nav a.active {
+      background-color: #a993fc;
+      color: #290a8b;
+      box-shadow: 0 4px 12px rgba(169, 147, 252, 0.8);
+    }
+
+    body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9ff;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.pricing-section {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 30px;
+}
+
+.plans {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.plan-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width: 300px;
+  padding: 25px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: 0.3s ease-in-out;
+}
+
+.plan-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.plan-card h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.plan-card .price {
+  font-size: 28px;
+  color: #4a00e0;
+  margin: 10px 0;
+}
+
+.plan-card .price span {
+  font-size: 14px;
+  color: #666;
+}
+
+.plan-card ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  margin-top: 15px;
+}
+
+.plan-card ul li {
+  margin-bottom: 10px;
+}
+
+.plan-card button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #4a00e0;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.plan-card button[disabled] {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.plan-card.popular {
+  border: 2px solid #4a00e0;
+}
+
+.badge {
+  background: #4a00e0;
+  color: #fff;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 6px;
+  margin-left: 5px;
+}
+/* Search Bar Styles */
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+#search-input {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #e3dfff;
+  font-family: 'Nunito', sans-serif;
+  width: 180px;
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+#search-input::placeholder {
+  color: #d0c4ff;
+}
+
+#search-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.3);
+  width: 220px;
+}
+
+#search-btn {
+  background: transparent;
+  border: none;
+  margin-left: -35px;
+  cursor: pointer;
+  color: #e3dfff;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .search-container {
+    order: 3;
+    width: 100%;
+    margin: 10px 0 0 0;
+  }
+  
+  #search-input {
+    width: 100%;
+  }
+  
+  #search-input:focus {
+    width: 100%;
+  }
+  
+  header {
+    flex-wrap: wrap;
+    padding: 0.5rem 1rem;
+    height: auto;
+  }
+  
+  nav {
+    order: 2;
+  }
+}
+  </style>
+<header>
+  <div class="logo" aria-label="Website name">EnglishClass</div>
+  <nav role="navigation" aria-label="Primary navigation">
+    <a href="index.html#home">Home</a>
+    <a href="index.html#tenses">Tenses</a>
+    <a href="index.html#quiz">Quiz</a>
+    <a href="course.html">Course</a>
+  </nav>
+  <div class="search-container">
+  <input type="text" id="search-input" placeholder="Cari tenses..." aria-label="Search tenses">
+  <button id="search-btn" aria-label="Search button">
+    <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 0 0 1.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 0 0-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 0 0 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    </svg>
+  </button>
+</div>
+</header>
+
+
+</head>
+<body>
+
+  <section class="pricing-section">
+    <h1>Choose Your English Tenses Course</h1>
+    <div class="plans">
+      <!-- Free Plan -->
+      <div class="plan-card">
+        <h2>Free</h2>
+        <p class="price">$0 <span>/month</span></p>
+        <p>Explore basic understanding of English tenses.</p>
+        <ul>
+          <li>✔️ Introduction to 3 basic tenses</li>
+          <li>✔️ Access to weekly PDF guides</li>
+          <li>✔️ Basic quizzes</li>
+        </ul>
+        <button disabled>Your current plan</button>
+      </div>
+
+      <!-- Plus Plan -->
+      <div class="plan-card popular">
+        <h2>Plus <span class="badge">POPULAR</span></h2>
+        <p class="price">$20 <span>/month</span></p>
+        <p>Master English tenses with full support and content.</p>
+        <ul>
+          <li>✔️ All from Free plan</li>
+          <li>✔️ In-depth lessons for 12 tenses</li>
+          <li>✔️ Video tutorials & examples</li>
+          <li>✔️ Practice quizzes with feedback</li>
+        </ul>
+<button onclick="window.open('https://www.instagram.com/englishclasses__?igsh=MWt4ajY0cmRma2o3ZA==');">Get Plus</button>
+
+</div>
+
+<!-- Pro Plan -->
+<div class="plan-card">
+    <h2>Pro</h2>
+    <p class="price">$25 <span>/month</span></p>
+    <p>Get private mentorship and full mastery over English tenses.</p>
+    <ul>
+        <li>✔️ Everything in Plus</li>
+        <li>✔️ Weekly 1-on-1 coaching</li>
+        <li>✔️ Certificate of completion</li>
+        <li>✔️ Access to private community</li>
+    </ul>
+    <button onclick="window.open('https://www.instagram.com/englishclasses__?igsh=MWt4ajY0cmRma2o3ZA==');">Get Pro</button>
+
+      </div>
+    </div>
+    
+  </section>
+  
+</body>
+</html>
